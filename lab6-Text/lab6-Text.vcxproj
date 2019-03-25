@@ -115,6 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Header\List_stack.h" />
+    <ClInclude Include="..\Header\Text.h" />
+    <ClInclude Include="..\Header\TTextLink.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lab6-Text\Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

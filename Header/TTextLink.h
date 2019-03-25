@@ -8,9 +8,9 @@ public:
 	char str[MaxLen];
 	TTextLink *pNext, //Следующее звено
 		*pDown;		  //Вложенное звено
-	TTextLink(char*_str = NULL, TTextLink* _pNext = NULL, TTextLink* _pDown = NULL);
+	TTextLink(const char*_str = NULL, TTextLink* _pNext = NULL, TTextLink* _pDown = NULL);
 };
-TTextLink::TTextLink(char*_str, TTextLink* _pNext, TTextLink* _pDown) 
+TTextLink::TTextLink(const char*_str, TTextLink* _pNext, TTextLink* _pDown) 
 {
  
 	pNext = _pNext;
