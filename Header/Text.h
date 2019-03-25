@@ -78,7 +78,7 @@ void TText::InsNextLine(std::string s)
 {
 	if (pCurr != NULL) 
 	{
-		TTextLink *tmp = new TTextLink(s.c_str());
+ 		TTextLink *tmp = new TTextLink((char*)s.c_str());
 		tmp->pNext = pCurr->pNext;
 		pCurr->pNext = tmp;
 	}
@@ -88,7 +88,7 @@ void TText::InsNextSection(std::string s)
 {
 	if (pCurr != NULL)
 	{
-		TTextLink *tmp = new TTextLink(s.c_str);
+		TTextLink *tmp = new TTextLink((char*)s.c_str());
 		tmp->pDown = pCurr->pNext;
 		pCurr -> pNext = tmp;
 	}
@@ -98,7 +98,7 @@ void TText::InsDownLine(std::string s)
 {
 	if (pCurr != NULL)
 	{
-		TTextLink *tmp = new TTextLink(s.c_str());
+		TTextLink *tmp = new TTextLink((char*)s.c_str());
 		tmp->pNext = pCurr->pDown;
 		pCurr->pDown = tmp;
 	}
@@ -108,7 +108,7 @@ void TText::InsDownSection(std::string s)
 {
 	if (pCurr != NULL)
 	{
-		TTextLink *tmp = new TTextLink(s.c_str);
+		TTextLink *tmp = new TTextLink((char*)s.c_str());
 		tmp->pDown = pCurr->pDown;
 		pCurr->pDown = tmp;
 	}
@@ -173,13 +173,15 @@ void TText::PrintText(TTextLink * tmp)
 	if (tmp != NULL) 
 	{
 		std::cout << tmp->str << std::endl;
-		if (tmp->pDown != NULL) 
+		if (tmp->pDown != NULL)
 		{
+			std::cout << '{' << std::endl;
 			PrintText(tmp->pDown);
-			std::cout << '}' <<std::endl;
-			if (tmp->pNext != NULL)
-				PrintText(tmp->pNext);
+			std::cout << '}' << std::endl;
 		}
+		if (tmp->pNext != NULL)
+			PrintText(tmp->pNext);
+		
 	}
 }
 
