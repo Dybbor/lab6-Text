@@ -8,6 +8,7 @@ protected:
 	TTextLink *pFirst,  //Указатель на первую строчку
 			 *pCurr;	//Указатель на текущую строчку
 	TStack <TTextLink*> st;	//Стек указателей 
+	int LevelText;		//Уровень  отступа
 public :
 	void GoNextLink();
 	void GoDownLink();
@@ -172,12 +173,14 @@ void TText::PrintText(TTextLink * tmp)
 {
 	if (tmp != NULL) 
 	{
+		for (int i = 0; i < LevelText; i++)
+			std::cout << "   ";
 		std::cout << tmp->str << std::endl;
 		if (tmp->pDown != NULL)
 		{
-			std::cout << '{' << std::endl;
+			LevelText++;
 			PrintText(tmp->pDown);
-			std::cout << '}' << std::endl;
+			LevelText--;
 		}
 		if (tmp->pNext != NULL)
 			PrintText(tmp->pNext);
@@ -187,6 +190,7 @@ void TText::PrintText(TTextLink * tmp)
 
 void TText::Print() 
 {
+	LevelText = 0;
 	PrintText(pFirst);
 }
 
