@@ -1,7 +1,9 @@
 #pragma once
 #include "TTextLink.h"
 #include "List_stack.h"
+#include "../lab6-Text/DesignConsole.h"
 #include <fstream>
+
 class TText 
 {
 protected:
@@ -30,5 +32,7 @@ public :
 	void Reset();
 	bool IsEmpty();
 	void GoNext();
+	int MoveCursor(TTextLink *tmp);
+	void KeyHandler();
 };
 

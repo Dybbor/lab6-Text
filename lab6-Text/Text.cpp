@@ -1,5 +1,5 @@
 #include "../Header/Text.h"
-
+#include <conio.h>
 
 TText::TText(TTextLink *p)
 {
@@ -200,5 +200,39 @@ void TText::GoNext()
 			st.Push(pCurr->pDown);
 		if (pCurr->pNext != NULL)
 			st.Push(pCurr->pNext);
+	}
+}
+
+int TText::MoveCursor(TTextLink *tmp) 
+{
+	int count = 1;
+	if (tmp->pDown != NULL)count += MoveCursor(tmp->pDown);
+	if (tmp->pNext != NULL)count += MoveCursor(tmp->pNext);
+	return count;
+}
+void TText::KeyHandler()
+{
+	pCurr = pFirst;
+	int key = 0;
+	int x = 0, y = 0;
+	gotoxy(x, y);
+	while (key != 224)
+	{
+		key =_getch();
+		/*switch (key)
+		{
+		case 80: 		
+			if (pCurr->pNext != NULL) 
+			{
+				st.Push(pCurr); 
+				pCurr = pCurr->pNext;
+				if (pCurr->pDown != NULL)
+					y += MoveCursor(pCurr->pDown) + 1;
+				else if (pCurr->pNext != NULL) 
+					y++;
+			}
+			gotoxy(x, y);
+			break;
+		}*/
 	}
 }
