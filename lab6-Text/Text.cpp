@@ -206,8 +206,10 @@ void TText::GoNext()
 int TText::MoveCursor(TTextLink *tmp) 
 {
 	int count = 1;
-	if (tmp->pDown != NULL)count += MoveCursor(tmp->pDown);
-	if (tmp->pNext != NULL)count += MoveCursor(tmp->pNext);
+	if (tmp->pDown != NULL)
+		count += MoveCursor(tmp->pDown);
+	if (tmp->pNext != NULL)
+		count += MoveCursor(tmp->pNext);
 	return count;
 }
 void TText::KeyHandler()
@@ -230,8 +232,7 @@ void TText::KeyHandler()
 					y += MoveCursor(pCurr->pDown) + 1;
 				else
 					y++;
-				if (pCurr->pNext!=0)
-					pCurr = pCurr->pNext;
+				pCurr = pCurr->pNext;
 			}
 			gotoxy(x, y);
 			break;
@@ -246,19 +247,22 @@ void TText::KeyHandler()
 			gotoxy(x, y);
 			break;
 		case 72: //Up
-			if (!st.IsEmpty()) 
+			if (pCurr != NULL && (!st.IsEmpty()))
 			{
 				if (st.Top()->pNext == pCurr)
 				{
-					y--;
-					pCurr == st.Pop();
+					if (st.Top()->pDown != NULL)
+						y -= MoveCursor(st.Top()->pDown) + 1;
+					else
+						y--;
+					pCurr = st.Pop();
 				}
 				else 
 					if (st.Top()->pDown == pCurr)
 					{
 						x -= 3;
 						y--;
-						pCurr == st.Pop();
+						pCurr = st.Pop();
 	
 					}
 					gotoxy(x, y);
