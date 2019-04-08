@@ -216,23 +216,54 @@ void TText::KeyHandler()
 	int key = 0;
 	int x = 0, y = 0;
 	gotoxy(x, y);
-	while (key != 224)
+	while (key!=79)
 	{
-		key =_getch();
-		/*switch (key)
+		key = _getch();
+		key = _getch();
+		switch (key)
 		{
-		case 80: 		
+		case 80: 		//Dowm
 			if (pCurr->pNext != NULL) 
 			{
 				st.Push(pCurr); 
-				pCurr = pCurr->pNext;
 				if (pCurr->pDown != NULL)
 					y += MoveCursor(pCurr->pDown) + 1;
-				else if (pCurr->pNext != NULL) 
+				else
 					y++;
+				if (pCurr->pNext!=0)
+					pCurr = pCurr->pNext;
 			}
 			gotoxy(x, y);
 			break;
-		}*/
+		case 77:  //Right	
+			if (pCurr->pDown != NULL)
+			{
+				st.Push(pCurr);
+				pCurr = pCurr->pDown;
+				x += 3;;
+				y++;
+			}
+			gotoxy(x, y);
+			break;
+		case 72: //Up
+			if (!st.IsEmpty()) 
+			{
+				if (st.Top()->pNext == pCurr)
+				{
+					y--;
+					pCurr == st.Pop();
+				}
+				else 
+					if (st.Top()->pDown == pCurr)
+					{
+						x -= 3;
+						y--;
+						pCurr == st.Pop();
+	
+					}
+					gotoxy(x, y);
+			}
+			break;
+		}
 	}
 }

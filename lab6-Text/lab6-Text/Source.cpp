@@ -5,10 +5,11 @@ using namespace std;
 
 void main()
 {
-	ifstream ifs("text.txt");
+	ifstream ifs("test2.txt");
 	TText t;
-	t.Read((char *)("text.txt"));
+	t.Read((char *)("test2.txt"));
 	ifs.close();
 	t.Print();
 	t.KeyHandler();
+	system("pause");
 }
