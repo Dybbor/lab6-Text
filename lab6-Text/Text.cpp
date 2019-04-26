@@ -231,6 +231,8 @@ void TText::KeyHandler()
 			std::cout << "Insert -  вставка звена" << std::endl;
 			gotoxy(0, 2);
 			std::cout << "Delete - удаление звена" << std::endl;
+			gotoxy(0, 3);
+			clreol();
 		}
 		gotoxy(x, y);
 		key = _getch();
@@ -281,7 +283,7 @@ void TText::KeyHandler()
 					gotoxy(x, y);
 			}
 			break;
-		case 82:
+		case 82: //Insert
 			while (key!=48 && key != 49 && key != 50 && key!=51 && key!=52)
 			{
 				gotoxy(0, 0);
@@ -304,40 +306,73 @@ void TText::KeyHandler()
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsNextLine(str);
-					gotoxy(0, 4);
-					Print();
+				/*	gotoxy(0, 4);
+					Print();*/
 					break;
 				case 50: // 2
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsNextSection(str);
-					gotoxy(0, 4);
-					Print();
+					/*gotoxy(0, 4);
+					Print();*/
 					break;
 				case 51: // 3
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsDownLine(str);
-					gotoxy(0, 4);
-					Print();
-					break;
+					/*gotoxy(0, 4);
+					Print();*/
 					break;
 				case 52: // 4
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsDownSection(str);
-					gotoxy(0, 4);
-					Print();
+					/*gotoxy(0, 4);
+					Print();*/
 					break;
+				}
+				gotoxy(0, 4);
+				Print();
+			}
+			break;
+		case 83: //delete
+			while (key != 48 && key != 49 && key != 50)
+			{
+				gotoxy(0, 0);
+				clreol();
+				std::cout << "1 - ”далить следующюю строчку" << std::endl;
+				gotoxy(0, 1);
+				clreol();
+				std::cout << "2 - ”далить вложенную строчку" << std::endl;
+				gotoxy(0, 2);
+				clreol();
+				std::cout << "0 - ќтмена" << std::endl;
+				gotoxy(x, y);
+				key = _getch();
+				switch (key)
+				{
+				case 48:
+					break;
+				case 49:
+					DelNext();
+					break;
+				case 50:
+					DelDown();
 					break;
 
 				}
 			}
-			gotoxy(x, y);
+			if (key != 48)
+			{
+				clrscr();
+				gotoxy(0, 4);
+				Print();
+			}
 			break;
+		
 		}
 	}
 }
