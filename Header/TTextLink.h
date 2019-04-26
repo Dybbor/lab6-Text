@@ -8,8 +8,8 @@ public:
 	char str[MaxLen];
 	TTextLink *pNext, //Следующее звено
 		*pDown;		  //Вложенное звено
-	TTextLink(char*_str = NULL, TTextLink* _pNext = NULL, TTextLink* _pDown = NULL) 
-	{
+	TTextLink(char*_str = NULL, TTextLink* _pNext = NULL, TTextLink* _pDown = NULL);
+	/*{
 		
 
 			pNext = _pNext;
@@ -20,5 +20,5 @@ public:
 				strcpy(str, _str);
 
 		
-	}
+	}*/
 };

@@ -19,10 +19,10 @@ public :
 	void GoFirstLink();
 	std::string GetStr();
 	void SetStr(std::string str);
-	void InsNextLine(std::string s);
-	void InsNextSection(std::string s);
-	void InsDownLine(std::string s);
-	void InsDownSection(std::string s);
+	void InsNextLine(std::string s);	//Вставка строки в тот же уровень
+	void InsNextSection(std::string s);	//Вставка раздела в тот же уровень
+	void InsDownLine(std::string s);	//Вствака строки в подуровень
+	void InsDownSection(std::string s);	//Вставка раздела в подуровень
 	void DelNext();
 	void DelDown();
 	TTextLink* ReadText(std::ifstream &ifs);

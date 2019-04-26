@@ -12,7 +12,7 @@ TTextLink::TTextLink(char*_str, TTextLink* _pNext, TTextLink* _pDown)
 		strcpy(str, _str);
 }
 
-void* TTextLink::operator new(size_t s) 
+/*void* TTextLink::operator new(size_t s) 
 {
 	TTextLink *tmp = mem.pFree;
 	if (mem.pFree != NULL)
@@ -68,4 +68,4 @@ void TTextLink::CleanMem(TText &txt)
 			delete tmp;
 		tmp++;
 	}
-}
+}*/

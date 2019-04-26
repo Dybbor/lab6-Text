@@ -216,12 +216,25 @@ void TText::KeyHandler()
 {
 	pCurr = pFirst;
 	int key = 0;
-	int x = 0, y = 0;
+	std::string str;
+	int x = 0, y = 4;
 	gotoxy(x, y);
+	Print();
 	while (key!=79)
 	{
+		if (key == 48 || key == 49 || key == 50 || key == 51 || key == 52 || key==0) {
+			gotoxy(0, 0);
+			clreol();
+			std::cout << "Навигация по звеньям осуществляется с помощью стрелок" << std::endl;
+			gotoxy(0, 1);
+			clreol();
+			std::cout << "Insert -  вставка звена" << std::endl;
+			gotoxy(0, 2);
+			std::cout << "Delete - удаление звена" << std::endl;
+		}
+		gotoxy(x, y);
 		key = _getch();
-		key = _getch();
+		
 		switch (key)
 		{
 		case 80: 		//Dowm
@@ -267,6 +280,63 @@ void TText::KeyHandler()
 					}
 					gotoxy(x, y);
 			}
+			break;
+		case 82:
+			while (key!=48 && key != 49 && key != 50 && key!=51 && key!=52)
+			{
+				gotoxy(0, 0);
+				clreol();
+				std::cout << "1 - вставка строку в тот же уровень   2 - вставка раздела в тот же уровень" << std::endl;
+				gotoxy(0, 1);
+				clreol();
+				std::cout << "3 - вставка строки в подуровень       4 - вставка раздела в подуровень  " << std::endl;
+				gotoxy(0, 2);
+				clreol();
+				std::cout << "0 - отмена" << std::endl;
+				gotoxy(x, y);
+				key = _getch();
+				switch (key)
+				{
+				case 48:
+					break;
+				case 49: // 1
+					clrscr();
+					std::cout << "Введите название звена" << std::endl;
+					std::cin >> str;
+					InsNextLine(str);
+					gotoxy(0, 4);
+					Print();
+					break;
+				case 50: // 2
+					clrscr();
+					std::cout << "Введите название звена" << std::endl;
+					std::cin >> str;
+					InsNextSection(str);
+					gotoxy(0, 4);
+					Print();
+					break;
+				case 51: // 3
+					clrscr();
+					std::cout << "Введите название звена" << std::endl;
+					std::cin >> str;
+					InsDownLine(str);
+					gotoxy(0, 4);
+					Print();
+					break;
+					break;
+				case 52: // 4
+					clrscr();
+					std::cout << "Введите название звена" << std::endl;
+					std::cin >> str;
+					InsDownSection(str);
+					gotoxy(0, 4);
+					Print();
+					break;
+					break;
+
+				}
+			}
+			gotoxy(x, y);
 			break;
 		}
 	}
