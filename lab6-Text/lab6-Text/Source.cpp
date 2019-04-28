@@ -9,7 +9,7 @@ TTextMem  TTextLink::mem;
 void main()
 {
 	setlocale(LC_ALL, "Russian");
-	TTextLink::InitMem(20);
+	TTextLink::InitMem(25);
 	ifstream ifs("test2.txt");
 	ofstream ofs("NewText.txt",/* std::*/ios::trunc);
 	TText t;

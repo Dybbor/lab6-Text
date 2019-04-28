@@ -73,7 +73,7 @@ void TTextLink::PrintFree() {
 	TTextLink *tmp = mem.pFree;
 	while (tmp != NULL) {
 		if (strlen(tmp->str) == 0)
-			std::cout <<"Empty" << std::endl;
+			std::cout <<"Free link" << std::endl;
 		else
 			std::cout << tmp->str << std::endl;
 		tmp = tmp->pNext;
