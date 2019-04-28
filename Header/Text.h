@@ -3,16 +3,19 @@
 #include "List_stack.h"
 #include "../lab6-Text/DesignConsole.h"
 #include <fstream>
+#include <string>
 
 class TText 
 {
-protected:
-	TTextLink *pFirst,  //Указатель на первую строчку
-			 *pCurr;	//Указатель на текущую строчку
+
+	//TTextLink *pFirst,  //Указатель на первую строчку
+	//		 *pCurr;	//Указатель на текущую строчку
+	TTextLink *pFirst, *pCurr;
 	TStack <TTextLink*> st;	//Стек указателей 
 	int LevelText;		//Уровень  отступа
 public :
 	TText(TTextLink *p = NULL);
+	TTextLink* GetCurr();
 	void GoNextLink();
 	void GoDownLink();
 	void GoPrevLink();

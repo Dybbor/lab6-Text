@@ -1,5 +1,5 @@
 #include "..\Header\TTextLink.h"
-
+#include "..\Header\Text.h"
 TTextLink::TTextLink(char*_str, TTextLink* _pNext, TTextLink* _pDown)
 {
 
@@ -12,7 +12,7 @@ TTextLink::TTextLink(char*_str, TTextLink* _pNext, TTextLink* _pDown)
 		strcpy(str, _str);
 }
 
-/*void* TTextLink::operator new(size_t s) 
+void* TTextLink::operator new(size_t s) 
 {
 	TTextLink *tmp = mem.pFree;
 	if (mem.pFree != NULL)
@@ -42,6 +42,7 @@ void TTextLink::InitMem(int n)
 		tmp++;
 	}
 	mem.pLast->pNext = NULL;
+	mem.pLast->str[0] = '\0';
 }
 
 void TTextLink::CleanMem(TText &txt) 
@@ -49,13 +50,11 @@ void TTextLink::CleanMem(TText &txt)
 	TTextLink* tmp = mem.pFree;
 	while (tmp!=NULL)
 	{
-		strcpy(tmp->str, "&");
+		strcat(tmp->str, "&"); ///strcpy!!!!
 		tmp = tmp->pNext;
 	}
 	for (txt.Reset(); !txt.IsEmpty(); txt.GoNext()) 
-	{
-		strcat(txt.pCurr->str, "&");
-	}
+		strcat(txt.GetCurr()->str, "&");
 	tmp = mem.pFree;
 	while (tmp <= mem.pLast) 
 	{
@@ -68,4 +67,4 @@ void TTextLink::CleanMem(TText &txt)
 			delete tmp;
 		tmp++;
 	}
-}*/
+}

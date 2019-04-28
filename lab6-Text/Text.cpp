@@ -1,4 +1,4 @@
-#include "../Header/Text.h"
+#include "..\Header\Text.h"
 #include <conio.h>
 
 TText::TText(TTextLink *p)
@@ -9,6 +9,10 @@ TText::TText(TTextLink *p)
 		pFirst = new TTextLink();
 	pCurr = pFirst;
 	LevelText = 0;
+}
+
+TTextLink* TText::GetCurr() {
+	return pCurr;
 }
 
 void TText::GoNextLink()
