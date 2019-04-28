@@ -68,3 +68,14 @@ void TTextLink::CleanMem(TText &txt)
 		tmp++;
 	}
 }
+
+void TTextLink::PrintFree() {
+	TTextLink *tmp = mem.pFree;
+	while (tmp != NULL) {
+		if (strlen(tmp->str) == 0)
+			std::cout <<"Empty" << std::endl;
+		else
+			std::cout << tmp->str << std::endl;
+		tmp = tmp->pNext;
+	}
+}

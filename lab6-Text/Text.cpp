@@ -153,6 +153,21 @@ void TText::Read(char *fn)
 	pFirst = ReadText(ifs);
 }
 
+void TText::WriteInFile(TTextLink *tmp, std::ofstream &ofs) {
+	ofs << tmp->str << std::endl;
+	if (tmp->pDown != NULL) {
+		ofs << '{' << std::endl;
+		WriteInFile(tmp->pDown, ofs);
+		ofs << '}' << std::endl;
+	}
+	if (tmp->pNext != NULL)WriteInFile(tmp->pNext, ofs);
+}
+
+void TText::Write(char *fn) {
+	std::ofstream ofs(fn);
+	WriteInFile(pFirst, ofs);
+}
+
 void TText::PrintText(TTextLink * tmp)
 {
 	if (tmp != NULL)
@@ -236,7 +251,7 @@ void TText::KeyHandler()
 			gotoxy(0, 2);
 			std::cout << "Delete - удаление звена" << std::endl;
 			gotoxy(0, 3);
-			clreol();
+			std::cout << "End - выход" << std::endl;
 		}
 		gotoxy(x, y);
 		key = _getch();

@@ -22,4 +22,5 @@ public:
 	void operator delete(void* p);
 	static void InitMem(int n);
 	static void CleanMem(TText &txt);
+	static void PrintFree();
 };

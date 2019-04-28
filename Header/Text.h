@@ -30,6 +30,8 @@ public :
 	void DelDown();
 	TTextLink* ReadText(std::ifstream &ifs);
 	void Read(char * fn);
+	void WriteInFile(TTextLink *tmp, std::ofstream &ofs);
+	void Write(char *fn);
 	void PrintText(TTextLink *tmp);
 	void Print();
 	void Reset();
