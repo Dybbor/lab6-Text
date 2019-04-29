@@ -50,12 +50,12 @@ void TTextLink::CleanMem(TText &txt)
 	TTextLink* tmp = mem.pFree;
 	while (tmp!=NULL)
 	{
-		strcat(tmp->str, "&"); ///strcpy!!!!
+		strcat(tmp->str, "&");
 		tmp = tmp->pNext;
 	}
 	for (txt.Reset(); !txt.IsEmpty(); txt.GoNext()) 
 		strcat(txt.GetCurr()->str, "&");
-	tmp = mem.pFree;
+	tmp = mem.pFirst;
 	while (tmp <= mem.pLast) 
 	{
 		if (strstr(tmp->str, "&") != NULL)
