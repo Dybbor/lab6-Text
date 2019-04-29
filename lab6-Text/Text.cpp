@@ -325,32 +325,24 @@ void TText::KeyHandler()
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsNextLine(str);
-				/*	gotoxy(0, 4);
-					Print();*/
 					break;
 				case 50: // 2
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsNextSection(str);
-					/*gotoxy(0, 4);
-					Print();*/
 					break;
 				case 51: // 3
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsDownLine(str);
-					/*gotoxy(0, 4);
-					Print();*/
 					break;
 				case 52: // 4
 					clrscr();
 					std::cout << "¬ведите название звена" << std::endl;
 					std::cin >> str;
 					InsDownSection(str);
-					/*gotoxy(0, 4);
-					Print();*/
 					break;
 				}
 				gotoxy(0, 4);
