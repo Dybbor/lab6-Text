@@ -119,9 +119,13 @@
     <ClInclude Include="..\Header\List_stack.h" />
     <ClInclude Include="..\Header\Text.h" />
     <ClInclude Include="..\Header\TTextLink.h" />
+    <ClInclude Include="DesignConsole.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DesignConsole.cpp" />
     <ClCompile Include="lab6-Text\Source.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TTextLink.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

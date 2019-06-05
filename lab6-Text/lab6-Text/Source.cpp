@@ -1,12 +1,29 @@
 #include <iostream>
-#include "../../Header/Text.h"
+#include "..\..\Header\Text.h"
+#include "..\DesignConsole.h"
+
 using namespace std;
 
-void main() 
+TTextMem  TTextLink::mem;
+
+void main()
 {
-	ifstream ifs("text.txt");
+	setlocale(LC_ALL, "Russian");
+	TTextLink::InitMem(25);
+	ifstream ifs("test2.txt");
+	ofstream ofs("NewText.txt",/* std::*/ios::trunc);
 	TText t;
-	t.Read((char *) ("text.txt"));
-	t.Print();
+	t.Read((char *)("test2.txt"));
+	ifs.close();
+	cout << "\n\n" << endl;
+	t.KeyHandler();
+	t.Write((char*)("NewText.txt"));
+	ofs.close();
+	clrscr();
+	cout << "Печать свободных до чистки" << endl;
+	TTextLink::PrintFree();
+	TTextLink::CleanMem(t);
+	cout << "Печать свободных после чистки" << endl;
+	TTextLink::PrintFree();
 	system("pause");
 }
